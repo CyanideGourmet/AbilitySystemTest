@@ -6,6 +6,6 @@ public abstract class Active : Ability
 {
     public virtual void Use()
     {
-        Debug.Log(NameCode + " used by: " + transform.parent.parent.parent.name);
+        Debug.Log(NameCode + " used by: " + transform.parent.parent.name);
     }
 }

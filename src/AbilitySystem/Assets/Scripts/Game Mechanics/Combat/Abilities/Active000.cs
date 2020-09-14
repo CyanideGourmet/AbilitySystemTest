@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Active000 : Active
 {
@@ -26,7 +27,7 @@ public class Active000 : Active
         }
         else if (EntityAbilities.EntityResources.Mana.LoseResource(resourceCost))
         {
-            guide.GetComponent<Light>().range = 5 * (1 + EntityAbilities.EntityAttributes.Magic.FindAttribute("Light").Value * 0.01f);
+            guide.GetComponent<Light2D>().pointLightOuterRadius = 5 * (1 + EntityAbilities.EntityAttributes.Magic.FindAttribute("Light").Value * 0.01f);
             guide.SetActive(true);
             Debug.Log("Light Spell used UWU. " + EntityAbilities.EntityResources.Mana.Value);
         }
