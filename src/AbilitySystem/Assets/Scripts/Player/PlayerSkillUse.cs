@@ -12,10 +12,13 @@ public class PlayerSkillUse : MonoBehaviour
             return _gcd;
         }
     }
-
     public float globalCooldown = 0.5f;
 
-    float _gcd;
+    public Active skill0;
+    public Active skill1;
+    public Active skill2;
+    public Active skill3;
+    public Active skill4;
 
     void SkillUsed()
     {
@@ -38,6 +41,7 @@ public class PlayerSkillUse : MonoBehaviour
         if(GlobalCooldown == 0)
         {
             Debug.Log("Skill0");
+            skill0.Use();
             SkillUsed();
         }
     }
@@ -74,4 +78,5 @@ public class PlayerSkillUse : MonoBehaviour
         }
     }
 
+    float _gcd;
 }

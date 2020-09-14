@@ -93,29 +93,35 @@ public class Attributes : MonoBehaviour
     public AttributeClass Body { get; } = new AttributeClass
     (
         "Body",
-        new Attribute[2]
+        new Attribute[5]
         {
             new Attribute("Strength", 10, 1f),
-            new Attribute("Agility", 10, 1f)
+            new Attribute("Endurance", 0, 1f),
+            new Attribute("Agility", 10, 1f),
+            new Attribute("Vitality", 0, 1f),
+            new Attribute("Recovery", 0, 0.8f)
         }
     );
     public AttributeClass Mind { get; } = new AttributeClass
     (
         "Mind",
-        new Attribute[2]
+        new Attribute[3]
         {
             new Attribute("Intelligence", 10, 1f),
-            new Attribute("Wisdom", 0, 1f)
+            new Attribute("Wisdom", 0, 0.8f),
+            new Attribute("Focus", 0, 0.8f)
         }
     );
     public AttributeClass Magic { get; } = new AttributeClass
     (
         "Magic",
-        new Attribute[3]
+        new Attribute[5]
         {
+            new Attribute("Raw", 5, 1f),
             new Attribute("Flame", 5, 1f),
             new Attribute("Water", 5, 1f),
-            new Attribute("Light", 5, 0.75f)
+            new Attribute("Light", 5, 0.75f),
+            new Attribute("Aptitude", 0, 1f)
         }
     );
 }
