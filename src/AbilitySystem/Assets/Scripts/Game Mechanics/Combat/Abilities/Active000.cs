@@ -8,15 +8,23 @@ public class Active000 : Active
     public GameObject prefab;
 
     GameObject guide;
-    int resourceCost = 12;
 
     protected override void Awake()
     {
         base.Awake();
         CreateSpell("Light Guide", "lightguide", 0, null);
+        _resCost = 12;
+        _castTime = 0f;
+        _gcd = false;
         guide = Instantiate(prefab, transform);
         guide.SetActive(false);
     }
+
+    protected void Start()
+    {
+        _resType = EntityAbilities.EntityResources.Mana.Name;
+    }
+
     public override void Use()
     {
         base.Use();
@@ -25,7 +33,7 @@ public class Active000 : Active
         {
             guide.SetActive(false);
         }
-        else if (EntityAbilities.EntityResources.Mana.LoseResource(resourceCost))
+        else if (EntityAbilities.EntityResources.Mana.LoseResource(ResourceCost))
         {
             guide.GetComponent<Light2D>().pointLightOuterRadius = 5 * (1 + EntityAbilities.EntityAttributes.Magic.FindAttribute("Light").Value * 0.01f);
             guide.SetActive(true);

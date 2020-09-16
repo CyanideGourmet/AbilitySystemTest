@@ -26,8 +26,23 @@ public class PlayerSkillUse : MonoBehaviour
     Active skill3;
     Active skill4;
 
+    Caster caster;
+    Rigidbody2D rb;
+    Resources resources;
+    Dictionary<string, Resources.Resource> resourceTypes = new Dictionary<string, Resources.Resource>();
+
+
+    private void Awake()
+    {
+        caster = GetComponent<Caster>();
+        rb = GetComponentInParent<Rigidbody2D>();
+        resources = transform.parent.parent.GetComponentInChildren<Resources>();
+    }
     private void Start()
     {
+        resourceTypes.Add(resources.Mana.Name, resources.Mana);
+        resourceTypes.Add(resources.Stamina.Name, resources.Stamina);
+        resourceTypes.Add(resources.Health.Name, resources.Health);
         FindSkills();
     }
 
@@ -80,17 +95,39 @@ public class PlayerSkillUse : MonoBehaviour
         if (GlobalCooldown == 0)
         {
             Debug.Log("Skill0");
-            skill0.Use();
-            SkillUsed();
+            if (rb.velocity == Vector2.zero || (rb.velocity != Vector2.zero && skill0.CastTime == 0f))
+            {
+                Resources.Resource resource = resourceTypes[skill0.ResourceType];
+                if(resource.TryLoseResource(skill0.ResourceCost) <= resource.Value)
+                {
+                    caster.Cast(skill0);
+                    if (skill0.GlobalCooldown) SkillUsed();
+                }
+                else
+                {
+                    Debug.LogError("Not enough resource!");
+                }
+            }
         }
     }
     public void Skill1(InputAction.CallbackContext callbackContext)
     {
         if (GlobalCooldown == 0)
         {
-            Debug.Log("Skill1");
-            skill1.Use();
-            SkillUsed();
+            Debug.Log("skill1");
+            if (rb.velocity == Vector2.zero || (rb.velocity != Vector2.zero && skill1.CastTime == 0f))
+            {
+                Resources.Resource resource = resourceTypes[skill1.ResourceType];
+                if (resource.TryLoseResource(skill1.ResourceCost) <= resource.Value)
+                {
+                    caster.Cast(skill1);
+                    if (skill1.GlobalCooldown) SkillUsed();
+                }
+                else
+                {
+                    Debug.LogError("Not enough resource!");
+                }
+            }
         }
     }
     public void Skill2(InputAction.CallbackContext callbackContext)

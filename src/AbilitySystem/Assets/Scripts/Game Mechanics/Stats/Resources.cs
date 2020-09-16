@@ -77,9 +77,18 @@ public class Resources : MonoBehaviour
             loseModifier = newLoseModifier;
         }
 
+
+        public int TryGainResource(int _val)
+        {
+            return Mathf.FloorToInt(_val * gainModifier);
+        }
+        public int TryLoseResource(int _val)
+        {
+            return Mathf.FloorToInt(_val * loseModifier);
+        }
         public void GainResource(int _val)
         {
-            if (_val <= 0)
+            if (_val < 0)
             {
                 throw new System.Exception("Incorrect gain value");
             }
@@ -87,7 +96,7 @@ public class Resources : MonoBehaviour
         }
         public bool LoseResource(int _val, bool loseAnyway = false)
         {
-            if (_val <= 0)
+            if (_val < 0)
             {
                 throw new System.Exception("Incorrect lose value");
             }
