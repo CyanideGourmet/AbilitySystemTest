@@ -14,11 +14,22 @@ public class PlayerSkillUse : MonoBehaviour
     }
     public float globalCooldown = 0.5f;
 
-    public Active skill0;
-    public Active skill1;
-    public Active skill2;
-    public Active skill3;
-    public Active skill4;
+    public string abilityNameCode0;
+    public string abilityNameCode1;
+    public string abilityNameCode2;
+    public string abilityNameCode3;
+    public string abilityNameCode4;
+
+    Active skill0;
+    Active skill1;
+    Active skill2;
+    Active skill3;
+    Active skill4;
+
+    private void Start()
+    {
+        FindSkills();
+    }
 
     void SkillUsed()
     {
@@ -27,7 +38,7 @@ public class PlayerSkillUse : MonoBehaviour
     }
     IEnumerator GlobalCooldownDecay()
     {
-        while(GlobalCooldown > 0)
+        while (GlobalCooldown > 0)
         {
             _gcd -= Time.deltaTime;
             yield return null;
@@ -36,9 +47,37 @@ public class PlayerSkillUse : MonoBehaviour
         yield return null;
     }
 
+    public void FindSkills()
+    {
+        Active[] activeSkills = transform.parent.parent.GetComponentsInChildren<Active>();
+        foreach (Active activeSkill in activeSkills)
+        {
+            if (activeSkill.NameCode == abilityNameCode0)
+            {
+                skill0 = activeSkill;
+            }
+            if (activeSkill.NameCode == abilityNameCode1)
+            {
+                skill1 = activeSkill;
+            }
+            if (activeSkill.NameCode == abilityNameCode2)
+            {
+                skill2 = activeSkill;
+            }
+            if (activeSkill.NameCode == abilityNameCode3)
+            {
+                skill3 = activeSkill;
+            }
+            if (activeSkill.NameCode == abilityNameCode4)
+            {
+                skill4 = activeSkill;
+            }
+        }
+    }
+
     public void Skill0(InputAction.CallbackContext callbackContext)
     {
-        if(GlobalCooldown == 0)
+        if (GlobalCooldown == 0)
         {
             Debug.Log("Skill0");
             skill0.Use();
@@ -50,6 +89,7 @@ public class PlayerSkillUse : MonoBehaviour
         if (GlobalCooldown == 0)
         {
             Debug.Log("Skill1");
+            skill1.Use();
             SkillUsed();
         }
     }
@@ -58,6 +98,7 @@ public class PlayerSkillUse : MonoBehaviour
         if (GlobalCooldown == 0)
         {
             Debug.Log("Skill2");
+            skill2.Use();
             SkillUsed();
         }
     }
@@ -66,6 +107,7 @@ public class PlayerSkillUse : MonoBehaviour
         if (GlobalCooldown == 0)
         {
             Debug.Log("Skill3");
+            skill3.Use();
             SkillUsed();
         }
     }
@@ -74,6 +116,7 @@ public class PlayerSkillUse : MonoBehaviour
         if (GlobalCooldown == 0)
         {
             Debug.Log("Skill4");
+            skill4.Use();
             SkillUsed();
         }
     }

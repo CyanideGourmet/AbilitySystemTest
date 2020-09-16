@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damage : MonoBehaviour
+namespace Damage
 {
     public enum Type
     {
@@ -11,5 +11,11 @@ public class Damage : MonoBehaviour
         FLAME,
         WATER,
         LIGHT
+    }
+    public struct DamagePacket
+    {
+        public int damageValue;
+        public Ability source;
+        public List<Passive> effects;
     }
 }

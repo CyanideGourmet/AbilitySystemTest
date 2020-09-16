@@ -85,7 +85,7 @@ public class Resources : MonoBehaviour
             }
             _value = Mathf.FloorToInt(Mathf.Clamp((_value + _val * gainModifier), 0, _maxValue));
         }
-        public bool LoseResource(int _val)
+        public bool LoseResource(int _val, bool loseAnyway = false)
         {
             if (_val <= 0)
             {
@@ -94,6 +94,7 @@ public class Resources : MonoBehaviour
             float valueToLose = _val * loseModifier;
             if(valueToLose > Value)
             {
+                if (loseAnyway) _value = 0;
                 return false;
             }
             else
