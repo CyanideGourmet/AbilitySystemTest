@@ -17,15 +17,13 @@ public class Attribute
             return _name;
         }
     }
-    public float multiplier;
     public int Value
     {
         get
         {
             return Mathf.FloorToInt(_value * multiplier);
         }
-    }
-    public string _name;
+    }                                       //_value * multiplier
 
     public void Add(int add)
     {
@@ -45,8 +43,8 @@ public class Attribute
     }
 
     private int _value;
-
-
+    private string _name;
+    private float multiplier;
 }
 public class AttributeClass
 {
