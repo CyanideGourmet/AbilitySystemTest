@@ -8,35 +8,37 @@ public class Caster : MonoBehaviour
     {
         get
         {
-            return castList;
+            return _castList;
         }
     }
 
-    List<Timer> castList = new List<Timer>();
     int maxQueuedCasts = 2;
     public void Cast(Active ability)
     {
-        if(castList.Count < maxQueuedCasts)
+        if(_castList.Count < maxQueuedCasts)
         {
             float timeToThisCast = 0f;
-            if (castList.Count != 0) timeToThisCast = castList[0].TimeLeft;
+            if (_castList.Count != 0) timeToThisCast = _castList[0].TimeLeft;
+
             Timer newTimer = gameObject.AddComponent<Timer>();
-            castList.Add(newTimer);
-            newTimer.TimeLeft = ability.CastTime + timeToThisCast;
+            _castList.Add(newTimer);
             newTimer.onTimeout.AddListener(ability.Use);
             newTimer.onTimeout.AddListener(() => Destroy(newTimer));
-            newTimer.onTimeout.AddListener(() => castList.Remove(newTimer));
+            newTimer.onTimeout.AddListener(() => _castList.Remove(newTimer));
+
+            newTimer.TimeLeft = ability.CastTime + timeToThisCast;
             newTimer.StartTimer();
         }
     }
-
     public void WipeCastQueue()
     {
-        foreach(Timer timer in castList)
+        foreach(Timer timer in _castList)
         {
             timer.StopTimer();
             Destroy(timer);
         }
-        castList.Clear();
+        _castList.Clear();
     }
+
+    List<Timer> _castList = new List<Timer>();
 }

@@ -32,18 +32,16 @@ public abstract class Ability : MonoBehaviour
             return _damageTypes;
         }
     }
-    public Abilities EntityAbilities
-    {
-        get
-        {
-            return abilityBook;
-        }
-    }
+
+    protected Resources resources;
+    protected Attributes attributes;
 
     protected virtual void Awake()
     {
-        abilityBook = transform.parent.GetComponent<Abilities>();
+        resources = GetComponentInParent<Resources>();
+        attributes = GetComponentInParent<Attributes>();
     }
+
     public virtual void CreateSpell(string name, string nameCode, int id, Damage.Type[] damageTypes)
     {
         _name = name;
@@ -56,5 +54,4 @@ public abstract class Ability : MonoBehaviour
     string _nameCode;
     int _id;
     Damage.Type[] _damageTypes;
-    Abilities abilityBook;
 }

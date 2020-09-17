@@ -22,10 +22,7 @@ public class PlayerAnimate : MonoBehaviour
             if (Mathf.Abs(movementVector.x) > Mathf.Abs(movementVector.y))
             {
                 direction = 1;
-                if (movementVector.x < 0)
-                {
-                    direction = 2;
-                }
+                if (movementVector.x < 0) direction = 2;
             }
 
             animator.SetTrigger("DirectionChange");

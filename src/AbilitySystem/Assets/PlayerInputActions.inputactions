@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Skill0",
+                    "name": "Ability0",
                     "type": "Button",
                     "id": "d2e946d7-3ef3-4a0c-a01a-49f8c7db7a57",
                     "expectedControlType": "Button",
@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Skill1",
+                    "name": "Ability1",
                     "type": "Button",
                     "id": "31619ac3-b6c2-47a7-9bf5-4ff4b7ea80b3",
                     "expectedControlType": "Button",
@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Skill2",
+                    "name": "Ability2",
                     "type": "Button",
                     "id": "2be3a284-19e8-4713-a86c-d023c6f7b3c4",
                     "expectedControlType": "Button",
@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Skill3",
+                    "name": "Ability3",
                     "type": "Button",
                     "id": "dc071190-367d-4aeb-8b5b-c0daad6850fe",
                     "expectedControlType": "Button",
@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Skill4",
+                    "name": "Ability4",
                     "type": "Button",
                     "id": "7e457b1f-c717-4569-9531-3b43750bd7e4",
                     "expectedControlType": "Button",
@@ -128,7 +128,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Skill0",
+                    "action": "Ability0",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -139,7 +139,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Skill1",
+                    "action": "Ability1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -150,7 +150,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Skill2",
+                    "action": "Ability2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -161,7 +161,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Skill3",
+                    "action": "Ability3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -172,7 +172,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Skill4",
+                    "action": "Ability4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -13,31 +13,30 @@ public class Active000 : Active
     {
         base.Awake();
         CreateSpell("Light Guide", "lightguide", 0, null);
+
         _resCost = 12;
         _castTime = 0f;
         _gcd = false;
+
         guide = Instantiate(prefab, transform);
         guide.SetActive(false);
     }
 
     protected void Start()
     {
-        _resType = EntityAbilities.EntityResources.Mana.Name;
+        _resType = resources.Mana.Name;
     }
 
     public override void Use()
     {
         base.Use();
-        bool isActive = guide.activeSelf;
-        if (isActive)
+        if (guide.activeSelf) guide.SetActive(false);
+        else if (resources.Mana.LoseResource(ResourceCost))
         {
-            guide.SetActive(false);
-        }
-        else if (EntityAbilities.EntityResources.Mana.LoseResource(ResourceCost))
-        {
-            guide.GetComponent<Light2D>().pointLightOuterRadius = 5 * (1 + EntityAbilities.EntityAttributes.Magic.FindAttribute("Light").Value * 0.01f);
+            guide.GetComponent<Light2D>().pointLightOuterRadius = 5 * (1 + attributes.Magic.FindAttribute("Light").Value * 0.01f);
             guide.SetActive(true);
-            Debug.Log("Light Spell used UWU. " + EntityAbilities.EntityResources.Mana.Value);
+
+            Debug.Log("Light Spell used UWU. " + resources.Mana.Value);
         }
     }
 }

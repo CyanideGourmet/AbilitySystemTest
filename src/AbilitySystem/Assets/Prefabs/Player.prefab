@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 1526163345579115086}
   - component: {fileID: 1526163345579115085}
   - component: {fileID: 1861105613792723145}
+  - component: {fileID: 1937382961573602612}
   m_Layer: 0
   m_Name: Player Actions
   m_TagString: Untagged
@@ -118,11 +119,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalCooldown: 0.5
-  skill0: {fileID: 0}
-  skill1: {fileID: 0}
-  skill2: {fileID: 0}
-  skill3: {fileID: 0}
-  skill4: {fileID: 0}
+  abilityNameCode0: 
+  abilityNameCode1: 
+  abilityNameCode2: 
+  abilityNameCode3: 
+  abilityNameCode4: 
+--- !u!114 &1937382961573602612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526163345579115087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605befe7e9609694d9649ada26a2f83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1526163346392217419
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +179,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526163346392217419}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -431,9 +444,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7149227748093974540}
-  - component: {fileID: 5707317821973546011}
   - component: {fileID: 934161061257429703}
-  - component: {fileID: 6970787481539537124}
+  - component: {fileID: 5707317821973546011}
   - component: {fileID: 7657606698203760484}
   m_Layer: 0
   m_Name: Game Mechanics
@@ -458,18 +470,6 @@ Transform:
   m_Father: {fileID: 1526163346392217418}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5707317821973546011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6999575221118298194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 878635623ca7ded4d9f192bf255b4601, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &934161061257429703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198bae30ba3193f4eb05526986e34bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6970787481539537124
+--- !u!114 &5707317821973546011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -491,7 +491,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6999575221118298194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 120f96d0b91529e4291502f68ff3685b, type: 3}
+  m_Script: {fileID: 11500000, guid: 878635623ca7ded4d9f192bf255b4601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7657606698203760484

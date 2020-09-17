@@ -15,15 +15,8 @@ public class Timer : MonoBehaviour
         onTimeout.AddListener(() => TimeLeft = 0f);
     }
 
-    public void StartTimer()
-    {
-        StartCoroutine(CountdownAsync());
-    }
-
-    public void StopTimer()
-    {
-        isStopped = true;
-    }
+    public void StartTimer() => StartCoroutine(CountdownAsync());
+    public void StopTimer() => isStopped = true;
 
     IEnumerator CountdownAsync()
     {

@@ -14,7 +14,6 @@ public class CastBar : MonoBehaviour
     {
         castText = GetComponent<Text>();
     }
-
     private void FixedUpdate()
     {
         GetCastingTimer();

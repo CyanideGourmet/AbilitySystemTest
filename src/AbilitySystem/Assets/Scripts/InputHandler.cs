@@ -6,39 +6,39 @@ using UnityEngine.InputSystem;
 public class InputHandler : MonoBehaviour
 {
     PlayerInput playerInput;
-    PlayerSkillUse playerSkillUse;
+    PlayerAbilityUse playerAbilityUse;
     PlayerMovement playerMovement;
     PlayerAnimate playerAnimate;
 
     InputAction move;
-    InputAction skill0;
-    InputAction skill1;
-    InputAction skill2;
-    InputAction skill3;
-    InputAction skill4;
+    InputAction ability0;
+    InputAction ability1;
+    InputAction ability2;
+    InputAction ability3;
+    InputAction ability4;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
-        playerSkillUse = transform.parent.GetComponentInChildren<PlayerSkillUse>();
+        playerAbilityUse = transform.parent.GetComponentInChildren<PlayerAbilityUse>();
         playerMovement = transform.parent.GetComponentInChildren<PlayerMovement>();
         playerAnimate = transform.parent.parent.GetComponentInChildren<PlayerAnimate>();
 
         move = playerInput.actions.FindAction("Move");
-        skill0 = playerInput.actions.FindAction("Skill0");
-        skill1 = playerInput.actions.FindAction("Skill1");
-        skill2 = playerInput.actions.FindAction("Skill2");
-        skill3 = playerInput.actions.FindAction("Skill3");
-        skill4 = playerInput.actions.FindAction("Skill4");
+        ability0 = playerInput.actions.FindAction("Ability0");
+        ability1 = playerInput.actions.FindAction("Ability1");
+        ability2 = playerInput.actions.FindAction("Ability2");
+        ability3 = playerInput.actions.FindAction("Ability3");
+        ability4 = playerInput.actions.FindAction("Ability4");
 
         move.performed += playerMovement.Move;
         move.performed += playerAnimate.Move;
         move.canceled += playerMovement.Move;
         move.canceled += playerAnimate.Move;
-        skill0.performed += playerSkillUse.Skill0;
-        skill1.performed += playerSkillUse.Skill1;
-        skill2.performed += playerSkillUse.Skill2;
-        skill3.performed += playerSkillUse.Skill3;
-        skill4.performed += playerSkillUse.Skill4;
+        ability0.performed += playerAbilityUse.Ability0;
+        ability1.performed += playerAbilityUse.Ability1;
+        ability2.performed += playerAbilityUse.Ability2;
+        ability3.performed += playerAbilityUse.Ability3;
+        ability4.performed += playerAbilityUse.Ability4;
     }
 }

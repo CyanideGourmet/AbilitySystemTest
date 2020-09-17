@@ -6,10 +6,17 @@ using Damage;
 public sealed class DamageReciever : MonoBehaviour
 {
     Resources resources;
+    static GameObject deadEntitiesBin;
 
     private void Awake()
     {
         resources = GetComponent<Resources>();
+        if(deadEntitiesBin == null)
+        {
+            deadEntitiesBin = new GameObject();
+            deadEntitiesBin.name = "Dead Entities Bin";
+            deadEntitiesBin.transform.position = Vector3.zero;
+        }
     }
     public void Recieve(DamagePacket damagePacket)
     {
@@ -18,6 +25,7 @@ public sealed class DamageReciever : MonoBehaviour
         {
             resources.Stamina.LoseResourcePercentage(100f);
             resources.Mana.LoseResourcePercentage(100f);
+            transform.parent.SetParent(deadEntitiesBin.transform);
             transform.parent.gameObject.SetActive(false);
         }
     }

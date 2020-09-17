@@ -13,10 +13,7 @@ public class Projectile : DamageMedium
     {
         if (DamagePacket.source.transform.parent.parent.gameObject == collision.gameObject) return;
         DamageReciever damageReciever = collision.GetComponentInChildren<DamageReciever>();
-        if(damageReciever != null)
-        {
-            damageReciever.Recieve(DamagePacket);
-        }
+        if(damageReciever != null) damageReciever.Recieve(DamagePacket);
         Destroy(this.gameObject);
     }
 }

@@ -20,29 +20,19 @@ public class ResourceBars : MonoBehaviour
     private void Start()
     {
         resourceBars = new ResourceBar[3];
-        StartCoroutine(WaitForResources());
-    }
-
-    private void FixedUpdate()
-    {
-        foreach(ResourceBar resourceBar in resourceBars)
-        {
-            if(resourceBar != null) resourceBar.UpdateResourceBar();
-        }
-    }
-    IEnumerator WaitForResources()
-    {
-        while(playerResources.Health == null)
-        {
-            yield return null;
-        }
         health = new ResourceBar(playerResources.Health, healthText);
         stamina = new ResourceBar(playerResources.Stamina, staminaText);
         mana = new ResourceBar(playerResources.Mana, manaText);
         resourceBars[0] = health;
         resourceBars[1] = stamina;
         resourceBars[2] = mana;
-        yield return null;
+    }
+    private void FixedUpdate()
+    {
+        foreach(ResourceBar resourceBar in resourceBars)
+        {
+            if(resourceBar != null) resourceBar.UpdateResourceBar();
+        }
     }
 
     public class ResourceBar

@@ -163,16 +163,13 @@ public class Resources : MonoBehaviour
     private void Awake()
     {
         attributes = GetComponent<Attributes>();
-    }
-    private void Start()
-    {
         Dictionary<Attribute, float> valueModifier;
         Dictionary<Attribute, float> gainModifier;
         Dictionary<Attribute, float> loseModifier;
 
-        valueModifier = new Dictionary<Attribute, float> {{ attributes.Body.FindAttribute("Vitality"), 0.005f }};
-        gainModifier = new Dictionary<Attribute, float>{{ attributes.Body.FindAttribute("Recovery"), 0.0001f }};
-        loseModifier = new Dictionary<Attribute, float>{{ attributes.Body.FindAttribute("Endurance"), 0.0001f }};
+        valueModifier = new Dictionary<Attribute, float> { { attributes.Body.FindAttribute("Vitality"), 0.005f } };
+        gainModifier = new Dictionary<Attribute, float> { { attributes.Body.FindAttribute("Recovery"), 0.0001f } };
+        loseModifier = new Dictionary<Attribute, float> { { attributes.Body.FindAttribute("Endurance"), 0.0001f } };
         _health = new Resource("Health", valueModifier, gainModifier, loseModifier);
 
         valueModifier = new Dictionary<Attribute, float> { { attributes.Body.FindAttribute("Endurance"), 0.005f } };
