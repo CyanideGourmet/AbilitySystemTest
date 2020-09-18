@@ -13,14 +13,14 @@ public class Resources : MonoBehaviour
                 return _name;
             }
         }
-        public int Value
+        public float Value
         {
             get
             {
                 return _value;
             }
         }
-        public int MaxValue
+        public float MaxValue
         {
             get
             {
@@ -53,12 +53,12 @@ public class Resources : MonoBehaviour
             float newModifier = 1;                                                                  //New Resource modifier this tick
             foreach (KeyValuePair<Attribute, float> ValueModAttribute in ValueModAttributes)        //Get all the attribute values that influence this Resource's value
                 newModifier += (ValueModAttribute.Key.Value * ValueModAttribute.Value);
-            int newMaxValue = Mathf.FloorToInt(100 * newModifier);                                  //Calculate nex MaxValue
+            float newMaxValue = 100 * newModifier;                                                  //Calculate nex MaxValue
             if (newMaxValue != MaxValue)                                                            //If the new modifier (and MaxValue) is different from the current update the values
             {
                 float resourcePercentage = Value * 1f / MaxValue;                                        //Save current resource percentage
                 _maxValue = newMaxValue;
-                _value = Mathf.FloorToInt(MaxValue * resourcePercentage);
+                _value = MaxValue * resourcePercentage;
             }
         }
         public void UpdateGainModifier()
@@ -78,37 +78,39 @@ public class Resources : MonoBehaviour
         }
 
 
-        public int TryGainResource(int _val)
+        public float TryGainResource(float _val)
         {
-            return Mathf.FloorToInt(_val * gainModifier);
+            return _val * gainModifier;
         }
-        public int TryLoseResource(int _val)
+        public float TryLoseResource(float _val)
         {
-            return Mathf.FloorToInt(_val * loseModifier);
+            return _val * loseModifier;
         }
-        public void GainResource(int _val)
+        public void GainResource(float _val)
         {
             if (_val < 0)
             {
                 throw new System.Exception("Incorrect gain value");
             }
-            _value = Mathf.FloorToInt(Mathf.Clamp((_value + _val * gainModifier), 0, _maxValue));
+            _value = Mathf.Clamp((_value + _val * gainModifier), 0, _maxValue);
+            _value = Mathf.Round(_value * 100) / 100f;
         }
-        public bool LoseResource(int _val, bool loseAnyway = false)
+        public bool LoseResource(float _val, bool loseAnyway = false)
         {
             if (_val < 0)
             {
                 throw new System.Exception("Incorrect lose value");
             }
             float valueToLose = _val * loseModifier;
-            if(valueToLose > Value)
+            if (valueToLose > Value)
             {
                 if (loseAnyway) _value = 0;
                 return false;
             }
             else
             {
-                _value = Mathf.FloorToInt(Mathf.Clamp((_value - valueToLose), 0, _maxValue));
+                _value = Mathf.Clamp((_value - valueToLose), 0, _maxValue);
+                _value = Mathf.Round(_value * 100) / 100f;
                 return true;
             }
         }
@@ -118,7 +120,8 @@ public class Resources : MonoBehaviour
             {
                 throw new System.Exception("Incorrect gain percentage value");
             }
-            _value = Mathf.FloorToInt(Mathf.Clamp(_value * (1 + _per * gainModifier), 0, _maxValue));
+            _value = Mathf.Clamp(_value * (1 + _per * gainModifier), 0, _maxValue);
+            _value = Mathf.Round(_value * 100) / 100f;
         }
         public void LoseResourcePercentage(float _per)
         {
@@ -126,12 +129,13 @@ public class Resources : MonoBehaviour
             {
                 throw new System.Exception("Incorrect lose percentage value");
             }
-            _value = Mathf.FloorToInt(Mathf.Clamp(_value * (1 - _per * loseModifier), 0, _maxValue));
+            _value = Mathf.Clamp(_value * (1 - _per * loseModifier), 0, _maxValue);
+            _value = Mathf.Round(_value * 100) / 100f;
         }
 
         string _name;
-        int _value;
-        int _maxValue;
+        float _value;
+        float _maxValue;
         float gainModifier;     //Gain and loss modifiers affect gained and lost resource by a percentage per point in an attribute
         float loseModifier;
     }
@@ -142,6 +146,7 @@ public class Resources : MonoBehaviour
     {
         get
         {
+            _health.UpdateValues();
             return _health;
         }
     }
@@ -149,6 +154,7 @@ public class Resources : MonoBehaviour
     {
         get
         {
+            _stamina.UpdateValues();
             return _stamina;
         }
     }
@@ -156,6 +162,7 @@ public class Resources : MonoBehaviour
     {
         get
         {
+            _mana.UpdateValues();
             return _mana;
         }
     }

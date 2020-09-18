@@ -48,7 +48,7 @@ public class ResourceBars : MonoBehaviour
 
         public void UpdateResourceBar()
         {
-            uiText.text = resource.Name + ": " + resource.Value.ToString() + "/" + resource.MaxValue.ToString();
+            uiText.text = resource.Name + ": " + Mathf.RoundToInt(resource.Value).ToString() + "/" + Mathf.RoundToInt(resource.MaxValue).ToString();
         }
     }
 }

@@ -6,10 +6,9 @@ public class Active900 : Active
 {
     private int gainedAtt = 50;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-        CreateSpell("Increase Vitality", "addvit", 0, null);
+        CreateAbility("Increase Vitality", "addvit", 900, null);
 
         _resCost = 0;
         _castTime = 0f;
@@ -24,7 +23,6 @@ public class Active900 : Active
     {
         base.Use();
         attributes.Body.FindAttribute("Vitality").Add(gainedAtt);
-        resources.Health.UpdateValueModifier();
 
         Debug.Log(gainedAtt + " of Vitality was added to the Player");
         Debug.Log("Maximum Health is now " + resources.Health.Value);

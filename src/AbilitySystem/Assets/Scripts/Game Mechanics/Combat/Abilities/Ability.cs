@@ -36,13 +36,13 @@ public abstract class Ability : MonoBehaviour
     protected Resources resources;
     protected Attributes attributes;
 
-    protected virtual void Awake()
+    protected virtual void OnEnable()
     {
         resources = GetComponentInParent<Resources>();
         attributes = GetComponentInParent<Attributes>();
     }
 
-    public virtual void CreateSpell(string name, string nameCode, int id, Damage.Type[] damageTypes)
+    public virtual void CreateAbility(string name, string nameCode, int id, Damage.Type[] damageTypes)
     {
         _name = name;
         _nameCode = nameCode;

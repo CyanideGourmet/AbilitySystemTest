@@ -14,8 +14,8 @@ namespace Damage
     }
     public struct DamagePacket
     {
-        public int damageValue;
+        public float damageValue;
         public Ability source;
-        public List<Passive> effects;
+        public List<System.Type> effects;
     }
 }

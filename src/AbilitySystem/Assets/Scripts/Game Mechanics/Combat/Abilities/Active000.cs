@@ -9,10 +9,9 @@ public class Active000 : Active
 
     GameObject guide;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-        CreateSpell("Light Guide", "lightguide", 0, null);
+        CreateAbility("Light Guide", "lightguide", 0, null);
 
         _resCost = 12;
         _castTime = 0f;

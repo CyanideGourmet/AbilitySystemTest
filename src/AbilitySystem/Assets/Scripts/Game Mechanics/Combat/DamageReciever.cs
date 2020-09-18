@@ -6,11 +6,13 @@ using Damage;
 public sealed class DamageReciever : MonoBehaviour
 {
     Resources resources;
+    GameObject passives;
     static GameObject deadEntitiesBin;
 
     private void Awake()
     {
         resources = GetComponent<Resources>();
+        passives = resources.transform.Find("Passive").gameObject;
         if(deadEntitiesBin == null)
         {
             deadEntitiesBin = new GameObject();
@@ -20,6 +22,7 @@ public sealed class DamageReciever : MonoBehaviour
     }
     public void Recieve(DamagePacket damagePacket)
     {
+        foreach (System.Type effect in damagePacket.effects) passives.AddComponent(effect);
         resources.Health.LoseResource(damagePacket.damageValue, true);
         if(resources.Health.Value == 0)
         {
