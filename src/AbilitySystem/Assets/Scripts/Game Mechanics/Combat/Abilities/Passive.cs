@@ -12,4 +12,5 @@ public class Passive : Ability
     {
         Debug.Log(NameCode + " Passive was removed.");
     }
+    public virtual void AddParameters(float[] parameters) { }
 }

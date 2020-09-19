@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     private void Awake()
     {
         onTimeout.AddListener(() => TimeLeft = 0f);
+        onTimeout.AddListener(() => Destroy(this));
     }
 
     public void StartTimer() => StartCoroutine(CountdownAsync());

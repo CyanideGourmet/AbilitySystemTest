@@ -23,7 +23,6 @@ public class Caster : MonoBehaviour
             Timer newTimer = gameObject.AddComponent<Timer>();
             _castList.Add(newTimer);
             newTimer.onTimeout.AddListener(ability.Use);
-            newTimer.onTimeout.AddListener(() => Destroy(newTimer));
             newTimer.onTimeout.AddListener(() => _castList.Remove(newTimer));
 
             newTimer.TimeLeft = ability.CastTime + timeToThisCast;

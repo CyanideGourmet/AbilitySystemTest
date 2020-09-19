@@ -405,7 +405,7 @@ PrefabInstance:
     - target: {fileID: 1861105613792723145, guid: 2e0a9e353d7cbd14a826c9b00f504ae7,
         type: 3}
       propertyPath: abilityNameCode2
-      value: addvit
+      value: lessflamecircle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e0a9e353d7cbd14a826c9b00f504ae7, type: 3}
@@ -453,6 +453,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336cae422047fd346bf266c3556691e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &478477175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478477170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ceddeef953c04649b7bef83b5ebff16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4033948933029050078, guid: c63ee1fa2288e334d9bb5c5f51d2e2b1, type: 3}
 --- !u!1 &493613452
 GameObject:
   m_ObjectHideFlags: 0

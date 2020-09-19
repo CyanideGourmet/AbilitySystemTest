@@ -22,7 +22,11 @@ public sealed class DamageReciever : MonoBehaviour
     }
     public void Recieve(DamagePacket damagePacket)
     {
-        foreach (System.Type effect in damagePacket.effects) passives.AddComponent(effect);
+        foreach (DamagePacket.Effect effect in damagePacket.effects)
+        {
+            Passive newPassive = passives.AddComponent(effect.type) as Passive;
+            newPassive.AddParameters(effect.parameters);
+        }
         resources.Health.LoseResource(damagePacket.damageValue, true);
         if(resources.Health.Value == 0)
         {

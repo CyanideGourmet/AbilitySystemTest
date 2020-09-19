@@ -50,16 +50,17 @@ public class PlayerAbilityUse : MonoBehaviour
     void UseAbility(int abilityNr)
     {
         bool offGCD = GlobalCooldown == 0;
+        bool offCD = !abilities[abilityNr].IsOnCooldown;
         bool notMovingOrNoGCD = rb.velocity == Vector2.zero || (rb.velocity != Vector2.zero && abilities[abilityNr].CastTime == 0f);
         bool abilityAssigned = abilities[abilityNr] != null;
-        if (offGCD && notMovingOrNoGCD && abilityAssigned)
+        if (offGCD && notMovingOrNoGCD && abilityAssigned && offCD)
         {
             Debug.Log("Ability" + abilityNr.ToString());
             Resources.Resource resource = resourceTypes[abilities[abilityNr].ResourceType];
-            if (resource.TryLoseResource(abilities[abilityNr].ResourceCost) <= resource.Value)
+            if (resource.TryLoseResource(abilities[abilityNr].ResourceCost) <= resource.Value || abilities[abilityNr].IsToggled)
             {
                 caster.Cast(abilities[abilityNr]);
-                if (abilities[abilityNr].GlobalCooldown) AbilityUsed();
+                if (abilities[abilityNr].GlobalCooldown && !abilities[abilityNr].IsToggled) AbilityUsed();
             }
             else Debug.LogError("Not enough resource!");
         }

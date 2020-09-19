@@ -11,11 +11,32 @@ public abstract class Active : Ability
             return _castTime;
         }
     }
+    public float Cooldown
+    {
+        get
+        {
+            return _cooldown;
+        }
+    }
+    public bool IsOnCooldown
+    {
+        get
+        {
+            return _isOnCd;
+        }
+    }
     public bool GlobalCooldown
     {
         get
         {
             return _gcd;
+        }
+    }
+    public bool IsToggled
+    {
+        get
+        {
+            return _isToggled;
         }
     }
     public string ResourceType
@@ -25,7 +46,7 @@ public abstract class Active : Ability
             return _resType;
         }
     }
-    public int ResourceCost
+    public float ResourceCost
     {
         get
         {
@@ -34,12 +55,26 @@ public abstract class Active : Ability
     }
 
     protected float _castTime;
+    protected float _cooldown = 0f;
+    protected bool _isOnCd = false;
     protected bool _gcd = true;
+    protected bool _isToggled = false;
     protected string _resType;
-    protected int _resCost;
+    protected float _resCost;
 
     public virtual void Use()
     {
         Debug.Log(NameCode + " used by: " + transform.parent.parent.name);
+    }
+    protected virtual void StartCooldown()
+    {
+        _isOnCd = true;
+        StartCoroutine(CooldownDecay(Cooldown));
+    }
+    private IEnumerator CooldownDecay(float time)
+    {
+        while ((time -= Time.deltaTime) > 0f) yield return null;
+        _isOnCd = false;
+        yield return null;
     }
 }
