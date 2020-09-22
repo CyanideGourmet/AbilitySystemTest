@@ -10,7 +10,8 @@ namespace Damage
         RAW,
         FLAME,
         WATER,
-        LIGHT
+        LIGHT,
+        DARK
     }
     public struct DamagePacket
     {

@@ -113,12 +113,13 @@ public class Attributes : MonoBehaviour
     public AttributeClass Magic { get; } = new AttributeClass
     (
         "Magic",
-        new Attribute[5]
+        new Attribute[6]
         {
             new Attribute("Raw", 5, 1f),
             new Attribute("Flame", 5, 1f),
             new Attribute("Water", 5, 1f),
             new Attribute("Light", 5, 0.75f),
+            new Attribute("Dark", 5, 0.75f),
             new Attribute("Aptitude", 0, 1f)
         }
     );

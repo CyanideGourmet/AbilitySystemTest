@@ -20,7 +20,6 @@ public class Active002 : Active
         _gcd = true;
 
         area = Instantiate(prefab, transform);
-        area.SetActive(false);
     }
     private void Start()
     {
@@ -50,6 +49,8 @@ public class Active002 : Active
 
             area.GetComponent<Area>().ChangeParameters(radius, duration);
             area.SetActive(true);
+
+            StartCooldown();
         }
     }
 }
