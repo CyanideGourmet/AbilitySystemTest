@@ -14,6 +14,14 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponentInParent<Rigidbody2D>();
     }
 
+    private void FixedUpdate()
+    {
+        if(rb.velocity != Vector2.zero)
+        {
+            GetComponent<Caster>().WipeCastQueue();
+        }
+    }
+
     public void Move(InputAction.CallbackContext callbackContext)
     {
         Vector2 movementVector = callbackContext.ReadValue<Vector2>();
